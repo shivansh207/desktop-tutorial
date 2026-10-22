@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f8fc">
+  <title>Tiwari Coaching Classes | TCC</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17243b;
+      --muted: #758198;
+      --blue: #315be8;
+      --blue-dark: #2446c5;
+      --pale-blue: #edf2ff;
+      --orange: #ff9b54;
+      --green: #168a68;
+      --line: #e9edf4;
+      --surface: #ffffff;
+      --page: #f6f8fc;
+      --shadow: 0 14px 40px rgba(39, 56, 94, .08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--page);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+    button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible {
+      outline: 3px solid rgba(49, 91, 232, .28);
+      outline-offset: 2px;
+    }
+
+    .app-shell { max-width: 1200px; margin: 0 auto; padding: 24px 34px 110px; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 30px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; color: inherit; text-decoration: none; }
+    .brand-mark {
+      display: grid;
+      width: 46px;
+      height: 46px;
+      place-items: center;
+      border-radius: 15px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 17px;
+      font-weight: 850;
+      letter-spacing: -.8px;
+      box-shadow: 0 8px 18px rgba(49, 91, 232, .2);
+    }
+    .brand-name { display: block; font-size: 15px; font-weight: 800; letter-spacing: -.3px; }
+    .brand-caption { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: 1.15px; }
+    .top-actions { display: flex; align-items: center; gap: 12px; }
+    .welcome { color: var(--muted); font-size: 13px; }
+    .avatar {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      background: #e9efff;
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 800;
+      box-shadow: 0 2px 8px rgba(39, 56, 94, .09);
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      min-height: 294px;
+      grid-template-columns: 1.25fr .75fr;
+      align-items: center;
+      overflow: hidden;
+      padding: 44px 52px;
+      border-radius: 27px;
+      background: linear-gradient(112deg, #273fd0 0%, #426ae9 70%, #6283f5 100%);
+      color: #fff;
+      box-shadow: 0 18px 42px rgba(49, 91, 232, .2);
+    }
+    .hero::before, .hero::after { position: absolute; content: ""; border: 1px solid rgba(255,255,255,.13); border-radius: 50%; }
+    .hero::before { top: -155px; right: -54px; width: 420px; height: 420px; }
+    .hero::after { top: -100px; right: 5px; width: 310px; height: 310px; }
+    .hero-copy { position: relative; z-index: 1; max-width: 610px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 7px; margin-bottom: 17px; color: #dce5ff; font-size: 12px; font-weight: 750; letter-spacing: 1.1px; text-transform: uppercase; }
+    .eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: #ffbd83; }
+    .hero h1 { max-width: 560px; margin: 0; font-size: clamp(30px, 4vw, 47px); line-height: 1.12; letter-spacing: -1.8px; }
+    .hero p { max-width: 480px; margin: 17px 0 24px; color: #e2e9ff; font-size: 15px; line-height: 1.7; }
+    .primary-button, .secondary-button, .text-button, .icon-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 0;
+      border-radius: 11px;
+      font-weight: 750;
+      transition: transform .16s ease, background .16s ease, box-shadow .16s ease;
+    }
+    .primary-button:hover, .secondary-button:hover { transform: translateY(-1px); }
+    .primary-button { min-height: 44px; padding: 0 17px; background: #fff; color: var(--blue-dark); box-shadow: 0 5px 14px rgba(18, 35, 104, .13); }
+    .hero-art { position: relative; z-index: 1; display: grid; place-items: center; min-height: 190px; }
+    .book-stack { position: relative; width: 180px; height: 157px; }
+    .book {
+      position: absolute;
+      display: grid;
+      width: 123px;
+      height: 126px;
+      place-items: center;
+      border: 6px solid rgba(255,255,255,.72);
+      border-radius: 13px 21px 21px 13px;
+      background: #ffc27e;
+      color: #664c38;
+      font-size: 46px;
+      box-shadow: 8px 12px 24px rgba(18, 35, 104, .22);
+    }
+    .book.one { top: 24px; left: 15px; transform: rotate(-13deg); background: #ffbd78; }
+    .book.two { top: 15px; right: 10px; transform: rotate(11deg); background: #fff; }
+    .book-label { position: absolute; top: 62px; right: 27px; color: var(--blue); font-size: 17px; font-weight: 900; letter-spacing: -1px; transform: rotate(11deg); }
+
+    .section { margin-top: 38px; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 18px; margin-bottom: 17px; }
+    .section-heading h2 { margin: 0; font-size: 22px; letter-spacing: -.6px; }
+    .section-heading p { margin: 6px 0 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+    .text-button { padding: 8px 0; background: transparent; color: var(--blue); font-size: 13px; }
+    .class-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px; }
+    .course-card, .skill-card, .panel, .store-card {
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: var(--surface);
+      box-shadow: 0 4px 15px rgba(39, 56, 94, .035);
+    }
+    .course-card { min-height: 196px; padding: 19px; transition: transform .17s ease, box-shadow .17s ease; }
+    .course-card:hover, .skill-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+    .card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .grade-icon { display: grid; width: 43px; height: 43px; place-items: center; border-radius: 13px; background: var(--pale-blue); font-size: 22px; }
+    .grade-icon.warm { background: #fff2e8; }
+    .grade-icon.mint { background: #e9f8f2; }
+    .grade-icon.lilac { background: #f2edff; }
+    .tag { padding: 6px 9px; border-radius: 30px; background: #f3f5fa; color: #637089; font-size: 10px; font-weight: 750; white-space: nowrap; }
+    .course-card h3 { margin: 17px 0 6px; font-size: 17px; letter-spacing: -.3px; }
+    .course-card p { min-height: 37px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.55; }
+    .card-footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 15px; }
+    .subject-count { color: #79849a; font-size: 11px; font-weight: 650; }
+    .arrow-button { display: grid; width: 31px; height: 31px; place-items: center; border: 0; border-radius: 10px; background: #f0f3ff; color: var(--blue); font-size: 18px; }
+
+    .skills-panel { padding: 22px; border: 1px solid #e9e9fa; border-radius: 20px; background: linear-gradient(110deg, #fbfaff, #f4f5ff); }
+    .skill-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .skill-card { display: flex; align-items: center; gap: 14px; min-height: 96px; padding: 17px; text-align: left; transition: transform .17s ease, box-shadow .17s ease; }
+    .skill-icon { display: grid; flex: 0 0 44px; width: 44px; height: 44px; place-items: center; border-radius: 14px; background: #fff0e3; color: #bd672b; font-size: 18px; font-weight: 850; }
+    .skill-card h3 { margin: 0 0 5px; color: var(--ink); font-size: 13px; line-height: 1.4; }
+    .skill-card p { margin: 0; color: var(--muted); font-size: 11px; }
+    .skill-arrow { margin-left: auto; color: var(--blue); font-size: 18px; }
+
+    .view-panel { min-height: 450px; }
+    .panel { padding: 25px; }
+    .panel-title { margin: 0 0 7px; font-size: 23px; letter-spacing: -.6px; }
+    .panel-subtitle { margin: 0 0 22px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .store-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px; }
+    .store-card { overflow: hidden; }
+    .store-card-head { padding: 19px 18px 15px; background: linear-gradient(135deg, #f0f4ff, #fafbff); }
+    .store-card-head .grade-icon { margin-bottom: 14px; }
+    .store-card h3 { margin: 0 0 5px; font-size: 16px; }
+    .store-card p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .store-card-body { padding: 15px 18px 18px; }
+    .price-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 13px; }
+    .price { font-size: 21px; font-weight: 850; letter-spacing: -.5px; }
+    .price-note { color: var(--muted); font-size: 11px; }
+    .enroll-button { width: 100%; min-height: 39px; border: 0; border-radius: 10px; background: var(--blue); color: #fff; font-size: 12px; font-weight: 800; }
+    .enroll-button.enrolled { background: #e8f7f1; color: var(--green); }
+
+    .chat-layout { display: grid; grid-template-columns: minmax(200px, .7fr) 1.3fr; gap: 17px; }
+    .teacher-card { display: flex; align-items: center; gap: 13px; padding: 17px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+    .teacher-avatar { display: grid; width: 44px; height: 44px; flex: 0 0 44px; place-items: center; border-radius: 50%; background: #e9f8f2; font-size: 22px; }
+    .teacher-card h3 { margin: 0 0 4px; font-size: 13px; }
+    .teacher-card p { margin: 0; color: var(--muted); font-size: 11px; }
+    .online-dot { display: inline-block; width: 7px; height: 7px; margin-right: 4px; border-radius: 50%; background: #28b783; }
+    .chat-box { display: flex; min-height: 365px; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 15px; background: #fff; }
+    .chat-header { padding: 15px 18px; border-bottom: 1px solid var(--line); font-size: 13px; font-weight: 800; }
+    .messages { display: flex; flex: 1; flex-direction: column; gap: 10px; overflow-y: auto; padding: 17px; }
+    .message { max-width: 83%; align-self: flex-start; padding: 10px 12px; border-radius: 4px 13px 13px 13px; background: #f1f4fa; color: #33415d; font-size: 12px; line-height: 1.55; overflow-wrap: anywhere; }
+    .message.mine { align-self: flex-end; border-radius: 13px 4px 13px 13px; background: var(--blue); color: #fff; }
+    .message-time { display: block; margin-top: 4px; opacity: .68; font-size: 9px; }
+    .chat-form { display: flex; gap: 9px; padding: 12px; border-top: 1px solid var(--line); }
+    .chat-form input { min-width: 0; flex: 1; padding: 11px 12px; border: 1px solid var(--line); border-radius: 10px; color: var(--ink); }
+    .send-button { min-width: 76px; border: 0; border-radius: 10px; background: var(--blue); color: #fff; font-weight: 750; }
+    .chat-note { margin: 10px 0 0; color: var(--muted); font-size: 11px; }
+
+    .profile-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, .9fr); gap: 18px; }
+    .profile-form { display: grid; gap: 14px; }
+    .field { display: grid; gap: 7px; }
+    .field label { color: #526078; font-size: 12px; font-weight: 750; }
+    .field input, .field select { width: 100%; min-height: 42px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); }
+    .profile-form .primary-button { justify-self: start; background: var(--blue); color: #fff; }
+    .admin-card { align-self: start; }
+    .admin-card h3 { margin: 0 0 8px; font-size: 16px; }
+    .admin-card > p { margin: 0 0 17px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .admin-tools { display: grid; gap: 13px; padding-top: 15px; border-top: 1px solid var(--line); }
+    .file-input { width: 100%; padding: 10px; border: 1px dashed #ccd4e3; border-radius: 10px; background: #fafbfe; color: #65728a; font-size: 11px; }
+    .admin-notice { margin-top: 14px; padding: 11px 12px; border-radius: 10px; background: #fff7ed; color: #885322; font-size: 11px; line-height: 1.55; }
+    .form-message { min-height: 18px; margin: 0; color: var(--green); font-size: 12px; }
+    .materials { display: grid; gap: 8px; margin-top: 14px; }
+    .material { display: flex; align-items: center; gap: 10px; padding: 11px; border: 1px solid var(--line); border-radius: 11px; background: #fff; }
+    .material-icon { display: grid; width: 35px; height: 35px; flex: 0 0 35px; place-items: center; border-radius: 10px; background: #f0f3ff; font-size: 16px; }
+    .material-info { min-width: 0; flex: 1; }
+    .material-info strong { display: block; overflow: hidden; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+    .material-info span { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; }
+    .material a { color: var(--blue); font-size: 11px; font-weight: 750; text-decoration: none; }
+    .empty-state { padding: 18px; border: 1px dashed #dce2ed; border-radius: 12px; color: var(--muted); font-size: 12px; line-height: 1.6; text-align: center; }
+
+    .bottom-nav {
+      position: fixed;
+      z-index: 10;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      padding: 10px 16px max(10px, env(safe-area-inset-bottom));
+      border-top: 1px solid rgba(226, 231, 241, .88);
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(14px);
+    }
+    .nav-inner { display: grid; width: min(100%, 540px); grid-template-columns: repeat(4, 1fr); gap: 5px; }
+    .nav-button { display: grid; justify-items: center; gap: 4px; min-height: 51px; padding: 4px; border: 0; border-radius: 12px; background: transparent; color: #8791a4; font-size: 10px; font-weight: 700; }
+    .nav-icon { font-size: 19px; line-height: 1; }
+    .nav-button.active { background: #eff3ff; color: var(--blue); }
+
+    dialog { width: min(580px, calc(100% - 28px)); max-height: min(84vh, 760px); padding: 0; overflow: auto; border: 0; border-radius: 20px; background: #fff; color: var(--ink); box-shadow: 0 25px 80px rgba(18, 31, 62, .28); }
+    dialog::backdrop { background: rgba(19, 30, 53, .52); backdrop-filter: blur(3px); }
+    .dialog-content { padding: 24px; }
+    .dialog-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+    .dialog-top h2 { margin: 0 0 7px; font-size: 22px; letter-spacing: -.5px; }
+    .dialog-top p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.55; }
+    .icon-button { width: 34px; height: 34px; flex: 0 0 34px; border-radius: 10px; background: #f2f4f8; color: #69758b; font-size: 19px; }
+    .dialog-content h3 { margin: 21px 0 10px; font-size: 13px; }
+    .subject-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .subject-button { display: inline-flex; align-items: center; gap: 8px; padding: 9px 11px; border: 1px solid transparent; border-radius: 9px; background: #f2f5fb; color: #526078; font-size: 11px; font-weight: 700; }
+    .subject-button:hover { border-color: #d9e1ff; background: #eff3ff; color: var(--blue); }
+    .subject-button span { color: var(--blue); font-size: 15px; }
+    .subject-page-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+    .subject-page-heading h1 { margin: 10px 0 6px; font-size: clamp(25px, 4vw, 34px); letter-spacing: -.8px; }
+    .subject-page-heading p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .subject-back { padding: 0; }
+    .lesson-layout { display: grid; grid-template-columns: minmax(260px, .75fr) minmax(0, 1.25fr); gap: 18px; align-items: start; }
+    .lesson-upload, .lesson-list { padding: 21px; }
+    .lesson-upload h2, .lesson-list h2 { margin: 0 0 7px; font-size: 17px; letter-spacing: -.3px; }
+    .lesson-upload > p, .lesson-list > p { margin: 0 0 17px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .upload-form { display: grid; gap: 13px; }
+    .lesson-file { width: 100%; padding: 10px; border: 1px dashed #ccd4e3; border-radius: 10px; background: #fafbfe; color: #65728a; font-size: 11px; }
+    .lesson-upload .enroll-button { min-height: 42px; }
+    .lesson-item { overflow: hidden; margin-top: 12px; border: 1px solid var(--line); border-radius: 13px; background: #fff; }
+    .lesson-item:first-child { margin-top: 0; }
+    .lesson-preview { display: block; width: 100%; max-height: 380px; background: #17243b; }
+    .lesson-preview.pdf { height: 380px; background: #f2f5fb; }
+    .lesson-info { display: flex; align-items: center; justify-content: space-between; gap: 13px; padding: 13px 14px; }
+    .lesson-info strong { display: block; overflow: hidden; font-size: 12px; text-overflow: ellipsis; }
+    .lesson-info span { display: block; margin-top: 4px; color: var(--muted); font-size: 10px; }
+    .download-link { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; min-height: 34px; padding: 0 11px; border-radius: 9px; background: #eff3ff; color: var(--blue); font-size: 11px; font-weight: 750; text-decoration: none; }
+    .lesson-storage-note { margin-top: 15px; padding: 11px 12px; border-radius: 10px; background: #fff7ed; color: #885322; font-size: 11px; line-height: 1.55; }
+    .dialog-actions { display: flex; justify-content: flex-end; margin-top: 18px; }
+    .dialog-actions .enroll-button { width: auto; padding: 0 17px; }
+    .status-toast { position: fixed; z-index: 20; right: 18px; bottom: 85px; max-width: min(380px, calc(100% - 36px)); padding: 12px 16px; border-radius: 12px; background: #17243b; color: #fff; font-size: 12px; line-height: 1.5; box-shadow: var(--shadow); }
+    [hidden] { display: none !important; }
+
+    @media (max-width: 840px) {
+      .app-shell { padding: 20px 22px 105px; }
+      .hero { padding: 36px; }
+      .hero-art { transform: scale(.85); }
+      .class-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .store-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 620px) {
+      .app-shell { padding: 15px 15px 100px; }
+      .topbar { margin-bottom: 20px; }
+      .welcome { display: none; }
+      .hero { min-height: 250px; grid-template-columns: 1fr; padding: 29px 24px; }
+      .hero h1 { max-width: 420px; font-size: 34px; }
+      .hero p { max-width: 410px; margin: 13px 0 18px; font-size: 13px; }
+      .hero-art { position: absolute; right: -30px; bottom: -18px; min-height: 150px; opacity: .2; transform: scale(.75); }
+      .hero-copy { z-index: 2; }
+      .section { margin-top: 30px; }
+      .section-heading h2 { font-size: 19px; }
+      .class-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .course-card { min-height: 185px; padding: 14px; }
+      .course-card h3 { margin-top: 13px; font-size: 15px; }
+      .course-card p { font-size: 11px; }
+      .skills-panel { padding: 14px; }
+      .skill-grid { grid-template-columns: 1fr; gap: 9px; }
+      .skill-card { min-height: 76px; padding: 12px; }
+      .store-grid { grid-template-columns: 1fr; }
+      .chat-layout, .profile-grid { grid-template-columns: 1fr; }
+      .lesson-layout { grid-template-columns: 1fr; }
+      .teacher-card { padding: 13px; }
+      .panel { padding: 18px; }
+      .section-heading { align-items: flex-start; }
+    }
+    @media (max-width: 380px) {
+      .brand-name { font-size: 13px; }
+      .brand-caption { font-size: 9px; }
+      .class-grid { grid-template-columns: 1fr 1fr; }
+      .course-card { padding: 12px; }
+      .tag { padding: 5px 7px; font-size: 9px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Tiwari Coaching Classes home" data-nav="home">
+        <span class="brand-mark">TCC</span>
+        <span>
+          <span class="brand-name">Tiwari Coaching Classes</span>
+          <span class="brand-caption">LEARN · PRACTISE · GROW</span>
+        </span>
+      </a>
+      <div class="top-actions">
+        <span class="welcome" id="welcome-text">Welcome back!</span>
+        <button class="avatar" id="open-profile" aria-label="Open your profile">S</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="view-panel" id="home-view">
+        <div class="hero">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="eyebrow-dot"></span> Your learning, your pace</div>
+            <h1>Build a brighter future, one lesson at a time.</h1>
+            <p>School courses for classes 6–12, plus practical English grammar lessons — all in one place.</p>
+            <button class="primary-button" data-scroll="classes">Explore courses <span aria-hidden="true">→</span></button>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="book-stack">
+              <div class="book one">✦</div>
+              <div class="book two"></div>
+              <span class="book-label">TCC</span>
+            </div>
+          </div>
+        </div>
+
+        <section class="section" id="classes">
+          <div class="section-heading">
+            <div>
+              <h2>Find your class</h2>
+              <p>Strong foundations for every school year.</p>
+            </div>
+            <button class="text-button" data-nav="store">Browse store <span aria-hidden="true">→</span></button>
+          </div>
+          <div class="class-grid" id="class-grid"></div>
+        </section>
+
+        <section class="section">
+          <div class="section-heading">
+            <div>
+              <h2>Build your skills</h2>
+              <p>Learn English grammar step by step, from the basics to the details.</p>
+            </div>
+          </div>
+          <div class="skills-panel"><div class="skill-grid" id="skill-grid"></div></div>
+        </section>
+      </section>
+
+      <section class="view-panel" id="store-view" hidden>
+        <div class="panel">
+          <h1 class="panel-title">Course store</h1>
+          <p class="panel-subtitle">Explore a course, check what it covers, and save your enrollment. Payment checkout can be connected when the app has a backend.</p>
+          <div class="store-grid" id="store-grid"></div>
+        </div>
+      </section>
+
+      <section class="view-panel" id="chat-view" hidden>
+        <div class="panel">
+          <h1 class="panel-title">Chat with a teacher</h1>
+          <p class="panel-subtitle">Ask a question about your studies. Messages in this prototype are saved only in this browser.</p>
+          <div class="chat-layout">
+            <div>
+              <div class="teacher-card">
+                <div class="teacher-avatar" aria-hidden="true">👩‍🏫</div>
+                <div><h3>TCC Teacher</h3><p><span class="online-dot"></span>Ready to help</p></div>
+              </div>
+              <p class="chat-note">Share the class and subject you need help with to get a useful answer.</p>
+            </div>
+            <div class="chat-box">
+              <div class="chat-header">Your conversation</div>
+              <div class="messages" id="messages" aria-live="polite"></div>
+              <form class="chat-form" id="chat-form">
+                <input id="chat-input" name="message" type="text" maxlength="500" placeholder="Write a message..." autocomplete="off" aria-label="Write a message" required>
+                <button class="send-button" type="submit">Send</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view-panel" id="info-view" hidden>
+        <div class="panel">
+          <h1 class="panel-title">Your account</h1>
+          <p class="panel-subtitle">Update your details and manage course materials.</p>
+          <div class="profile-grid">
+            <form class="profile-form" id="profile-form">
+              <div class="field">
+                <label for="profile-name">Your name</label>
+                <input id="profile-name" name="name" type="text" maxlength="60" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="profile-email">Email address</label>
+                <input id="profile-email" name="email" type="email" maxlength="120" autocomplete="email" placeholder="you@example.com">
+              </div>
+              <div class="field">
+                <label for="profile-class">Your class</label>
+                <select id="profile-class" name="grade">
+                  <option value="">Choose your class</option>
+                  <option value="6">Class 6</option><option value="7">Class 7</option><option value="8">Class 8</option>
+                  <option value="9">Class 9</option><option value="10">Class 10</option><option value="11">Class 11</option><option value="12">Class 12</option>
+                </select>
+              </div>
+              <button class="primary-button" type="submit">Save details</button>
+              <p class="form-message" id="profile-message" aria-live="polite"></p>
+            </form>
+
+            <aside class="panel admin-card">
+              <h3>Subject materials</h3>
+              <p>Add a lesson video or PDF to a specific subject. Students can open a class and choose a subject to view its materials.</p>
+              <div class="empty-state" id="admin-lock">Admin uploads will be enabled after the server verifies Shivansh’s admin account. OTP sign-in and secure file storage are not connected yet.</div>
+              <div class="admin-notice">Do not use a browser-only role or name as admin authentication. Phone OTP, admin permissions, and saved course files require a trusted backend.</div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="view-panel" id="subject-page-view" hidden>
+        <div class="subject-page-heading">
+          <div>
+            <button class="text-button subject-back" id="back-to-course" type="button">← Back to subjects</button>
+            <h1 id="subject-page-title">Subject lessons</h1>
+            <p id="subject-page-description"></p>
+          </div>
+        </div>
+        <div class="lesson-layout">
+          <section class="panel lesson-upload">
+            <h2>Upload a lesson</h2>
+            <p>Add a video or PDF for students to view and download in this subject.</p>
+            <form class="upload-form" id="lesson-upload-form">
+              <div class="field">
+                <label for="lesson-title">Lesson title</label>
+                <input id="lesson-title" name="title" type="text" maxlength="100" placeholder="e.g. Introduction to fractions" required>
+              </div>
+              <div class="field">
+                <label for="lesson-file">Video or PDF file</label>
+                <input class="lesson-file" id="lesson-file" name="file" type="file" accept="video/*,.pdf,application/pdf" required>
+              </div>
+              <button class="enroll-button" type="submit">Upload to this subject</button>
+              <p class="form-message" id="lesson-upload-message" aria-live="polite"></p>
+            </form>
+            <div class="lesson-storage-note">Demo uploads are stored only in this browser. This page has no admin authentication yet, so do not upload private content. Other students/devices cannot see these files without shared server storage.</div>
+          </section>
+          <section class="panel lesson-list">
+            <h2>Videos &amp; PDFs</h2>
+            <p>Open lessons here or download the original file.</p>
+            <div id="subject-lessons" aria-live="polite"><div class="empty-state">Loading subject lessons…</div></div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <nav class="bottom-nav" id="bottom-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <button class="nav-button active" data-nav="home" aria-current="page"><span class="nav-icon" aria-hidden="true">⌂</span>Home</button>
+      <button class="nav-button" data-nav="store"><span class="nav-icon" aria-hidden="true">▣</span>Store</button>
+      <button class="nav-button" data-nav="chat"><span class="nav-icon" aria-hidden="true">☏</span>Chat</button>
+      <button class="nav-button" data-nav="info"><span class="nav-icon" aria-hidden="true">◉</span>Info</button>
+    </div>
+  </nav>
+
+  <dialog id="course-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-content" id="dialog-content"></div>
+  </dialog>
+  <div class="status-toast" id="status-toast" role="status" hidden></div>
+
+  <script>
+    const subjectsForGrade = (grade) => {
+      const regular = ["Hindi", "English", "Science", "Social Science", "Computer", "Mathematics"];
+      return grade >= 9
+        ? ["Hindi", "English", "Physics", "Chemistry", "Biology", "Social Science", "Computer", "Mathematics"]
+        : regular;
+    };
+
+    const courses = Array.from({ length: 7 }, (_, index) => {
+      const grade = index + 6;
+      return {
+        id: `class-${grade}`,
+        title: `Class ${grade}`,
+        description: grade >= 9 ? "School subjects with focused science lessons." : "All the important subjects, explained clearly.",
+        subjects: subjectsForGrade(grade),
+        price: 799 + (grade - 6) * 100,
+        kind: "class",
+        icon: grade < 9 ? "📗" : "🔬"
+      };
+    });
+
+    const skills = [
+      { id: "grammar-basic", title: "Basic English Grammar", description: "Start with the building blocks.", price: 299, level: "Beginner", icon: "A" },
+      { id: "grammar-medium", title: "Medium English Grammar", description: "Grow your grammar confidence.", price: 399, level: "Intermediate", icon: "Ab" },
+      { id: "grammar-detailed", title: "Detailed English Grammar", description: "Explore grammar in greater depth.", price: 499, level: "Advanced", icon: "ABC" }
+    ].map(skill => ({ ...skill, kind: "skill", subjects: ["English Grammar", skill.level] }));
+
+    const catalog = [...courses, ...skills];
+    const readState = (key, fallback) => {
+      const value = localStorage.getItem(key);
+      return value === null ? fallback : JSON.parse(value);
+    };
+    const state = {
+      profile: readState("tcc-profile", { name: "Student", email: "", grade: "" }),
+      enrolled: readState("tcc-enrolled", []),
+      messages: readState("tcc-messages", []),
+      uploads: [],
+      materialUrls: [],
+      activeSubject: null
+    };
+    let toastTimer;
+    let materialDbPromise;
+
+    const byId = (id) => document.getElementById(id);
+    const escapeHtml = (value) => String(value).replace(/[&<>"']/g, character => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+    })[character]);
+
+    function persist(key, value) {
+      localStorage.setItem(key, JSON.stringify(value));
+    }
+
+    function showToast(message) {
+      const toast = byId("status-toast");
+      toast.textContent = message;
+      toast.hidden = false;
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => { toast.hidden = true; }, 3400);
+    }
+
+    function renderHome() {
+      byId("class-grid").innerHTML = courses.map((course, index) => `
+        <article class="course-card">
+          <div class="card-top"><span class="grade-icon ${["", "warm", "mint", "lilac"][index % 4]}">${course.icon}</span><span class="tag">${course.subjects.length} subjects</span></div>
+          <h3>${course.title}</h3>
+          <p>${escapeHtml(course.description)}</p>
+          <div class="card-footer"><span class="subject-count">${course.kind === "class" ? "Classes 6–12" : ""}</span><button class="arrow-button" data-course="${course.id}" aria-label="Explore ${course.title}">→</button></div>
+        </article>`).join("");
+
+      byId("skill-grid").innerHTML = skills.map(skill => `
+        <button class="skill-card" data-course="${skill.id}">
+          <span class="skill-icon">${skill.icon}</span>
+          <span><h3>${escapeHtml(skill.title)}</h3><p>${escapeHtml(skill.level)} · View lessons</p></span>
+          <span class="skill-arrow" aria-hidden="true">→</span>
+        </button>`).join("");
+    }
+
+    function renderStore() {
+      byId("store-grid").innerHTML = catalog.map(course => {
+        const enrolled = state.enrolled.includes(course.id);
+        return `<article class="store-card">
+          <div class="store-card-head"><span class="grade-icon ${course.kind === "skill" ? "warm" : ""}">${course.icon}</span><h3>${escapeHtml(course.title)}</h3><p>${escapeHtml(course.description)}</p></div>
+          <div class="store-card-body"><div class="price-row"><span class="price">₹${course.price}</span><span class="price-note">course access</span></div>
+            <button class="enroll-button ${enrolled ? "enrolled" : ""}" data-enroll="${course.id}">${enrolled ? "✓ Enrolled" : "Enroll in course"}</button>
+          </div></article>`;
+      }).join("");
+    }
+
+    function renderMessages() {
+      const messages = byId("messages");
+      if (!state.messages.length) {
+        messages.innerHTML = '<div class="empty-state">No messages yet. Send your teacher a question to start chatting.</div>';
+      } else {
+        messages.innerHTML = state.messages.map(message => `
+          <div class="message ${message.mine ? "mine" : ""}">${escapeHtml(message.text)}<span class="message-time">${escapeHtml(message.time)}</span></div>`).join("");
+      }
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function renderProfile() {
+      byId("welcome-text").textContent = `Welcome, ${state.profile.name || "Student"}`;
+      byId("open-profile").textContent = (state.profile.name || "S").trim().charAt(0).toUpperCase();
+      byId("profile-name").value = state.profile.name || "";
+      byId("profile-email").value = state.profile.email || "";
+      byId("profile-class").value = state.profile.grade || "";
+    }
+
+    function switchView(view) {
+      ["home", "store", "chat", "info"].forEach(name => {
+        byId(`${name}-view`).hidden = name !== view;
+      });
+      document.querySelectorAll(".nav-button").forEach(button => {
+        const active = button.dataset.nav === view;
+        button.classList.toggle("active", active);
+        if (active) button.setAttribute("aria-current", "page");
+        else button.removeAttribute("aria-current");
+      });
+      if (view === "store") renderStore();
+      if (view === "chat") renderMessages();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderMaterials(courseId, subject) {
+      const items = state.uploads.filter(item => item.courseId === courseId && item.subject === subject);
+      if (!items.length) return '<div class="empty-state">No lesson videos or PDFs have been added to this subject yet.</div>';
+      return `<div class="materials">${items.map(item => `
+        <div class="material">
+          <span class="material-icon">${item.type === "video" ? "▶" : "▤"}</span>
+          <span class="material-info"><strong>${escapeHtml(item.title)}</strong><span>${item.type === "video" ? "Video lesson" : "PDF document"} · ${escapeHtml(item.fileName)}</span></span>
+          <a href="${item.url}" ${item.type === "video" ? 'target="_blank" rel="noopener"' : "target=_blank"}>${item.type === "video" ? "Watch" : "Open"}</a>
+        </div>`).join("")}</div>`;
+    }
+
+    function openMaterialDatabase() {
+        if (!("indexedDB" in window)) return Promise.reject(new Error("This browser does not support local lesson storage."));
+        if (materialDbPromise) return materialDbPromise;
+        materialDbPromise = new Promise((resolve, reject) => {
+          const request = indexedDB.open("tcc-subject-lessons", 1);
+          request.onupgradeneeded = () => {
+            const database = request.result;
+            if (!database.objectStoreNames.contains("lessons")) {
+              database.createObjectStore("lessons", { keyPath: "id", autoIncrement: true });
+            }
+          };
+          request.onsuccess = () => resolve(request.result);
+          request.onerror = () => reject(request.error || new Error("Could not open local lesson storage."));
+          request.onblocked = () => reject(new Error("Lesson storage is busy in another tab. Close other TCC tabs and try again."));
+        });
+        return materialDbPromise;
+    }
+
+    async function saveLesson(lesson) {
+        const database = await openMaterialDatabase();
+        return new Promise((resolve, reject) => {
+          const transaction = database.transaction("lessons", "readwrite");
+          transaction.objectStore("lessons").add(lesson);
+          transaction.oncomplete = () => resolve();
+          transaction.onerror = () => reject(transaction.error || new Error("Could not save this lesson."));
+          transaction.onabort = () => reject(transaction.error || new Error("Saving this lesson was cancelled."));
+        });
+    }
+
+    async function readSubjectLessons(courseId, subject) {
+        const database = await openMaterialDatabase();
+        return new Promise((resolve, reject) => {
+          const request = database.transaction("lessons", "readonly").objectStore("lessons").getAll();
+          request.onsuccess = () => resolve(request.result
+            .filter(item => item.courseId === courseId && item.subject === subject)
+            .sort((first, second) => second.createdAt - first.createdAt));
+          request.onerror = () => reject(request.error || new Error("Could not load this subject's lessons."));
+        });
+    }
+
+    function openSubjectPage(courseId, subject, addHistory = true) {
+        const course = catalog.find(item => item.id === courseId);
+        if (!course || !course.subjects.includes(subject)) {
+          showToast("That subject could not be found.");
+          return;
+        }
+        if (byId("course-dialog").open) byId("course-dialog").close();
+        const query = new URLSearchParams({ course: course.id, subject });
+        if (addHistory) {
+          history.replaceState({ returnToCourse: course.id }, "", location.href);
+          history.pushState({ tccSubjectPage: true }, "", `${location.pathname}?${query}`);
+        }
+        state.activeSubject = { courseId, subject };
+        byId("home-view").hidden = true;
+        byId("store-view").hidden = true;
+        byId("chat-view").hidden = true;
+        byId("info-view").hidden = true;
+        byId("subject-page-view").hidden = false;
+        byId("bottom-nav").hidden = true;
+        byId("subject-page-title").textContent = `${course.title} · ${subject}`;
+        byId("subject-page-description").textContent = `Lessons and study materials for ${subject} in ${course.title}.`;
+        byId("subject-lessons").innerHTML = '<div class="empty-state">Loading subject lessons…</div>';
+        window.scrollTo({ top: 0 });
+        renderSubjectLessons(courseId, subject);
+    }
+
+    async function renderSubjectLessons(courseId, subject) {
+        state.materialUrls.forEach(url => URL.revokeObjectURL(url));
+        state.materialUrls = [];
+        try {
+          const lessons = await readSubjectLessons(courseId, subject);
+          if (!state.activeSubject || state.activeSubject.courseId !== courseId || state.activeSubject.subject !== subject) return;
+          if (!lessons.length) {
+            byId("subject-lessons").innerHTML = '<div class="empty-state">No lessons have been uploaded for this subject yet.</div>';
+            return;
+          }
+          byId("subject-lessons").innerHTML = lessons.map(lesson => {
+            const url = URL.createObjectURL(lesson.file);
+            state.materialUrls.push(url);
+            const preview = lesson.type === "video"
+              ? `<video class="lesson-preview" controls preload="metadata" src="${url}">Your browser cannot play this video. Download the file to view it.</video>`
+              : `<iframe class="lesson-preview pdf" src="${url}" title="${escapeHtml(lesson.title)} PDF preview"></iframe>`;
+            return `<article class="lesson-item">
+              ${preview}
+              <div class="lesson-info">
+                <div><strong>${escapeHtml(lesson.title)}</strong><span>${lesson.type === "video" ? "Video lesson" : "PDF document"} · ${escapeHtml(lesson.fileName)}</span></div>
+                <a class="download-link" href="${url}" download="${escapeHtml(lesson.fileName)}">Download</a>
+              </div>
+            </article>`;
+          }).join("");
+        } catch (error) {
+          byId("subject-lessons").innerHTML = `<div class="empty-state">${escapeHtml(error.message)} Try opening this page in a current Chrome or Edge browser.</div>`;
+        }
+    }
+
+    function restoreAppView() {
+        const params = new URLSearchParams(location.search);
+        const courseId = params.get("course");
+        const subject = params.get("subject");
+        if (courseId && subject) {
+          openSubjectPage(courseId, subject, false);
+          return;
+        }
+        state.activeSubject = null;
+        state.materialUrls.forEach(url => URL.revokeObjectURL(url));
+        state.materialUrls = [];
+        byId("subject-page-view").hidden = true;
+        byId("bottom-nav").hidden = false;
+        switchView("home");
+        const course = history.state && history.state.returnToCourse;
+        if (course) openCourse(course);
+    }
+
+    function openCourse(courseId, selectedSubject = "") {
+      const course = catalog.find(item => item.id === courseId);
+      if (!course) return;
+      const enrolled = state.enrolled.includes(course.id);
+      const hasSelectedSubject = course.subjects.includes(selectedSubject);
+      const subjectContent = hasSelectedSubject ? `
+        <button class="text-button" data-course-subjects="${course.id}"><span aria-hidden="true">←</span> All subjects</button>
+        <h3>${escapeHtml(selectedSubject)} lessons</h3>
+        ${renderMaterials(course.id, selectedSubject)}` : `
+        <h3>Choose a subject to open lessons</h3>
+        <div class="subject-list">${course.subjects.map(subject => `
+          <button class="subject-button" data-subject-course="${course.id}" data-subject="${escapeHtml(subject)}">${escapeHtml(subject)}<span aria-hidden="true">→</span></button>`).join("")}
+        </div>`;
+      byId("dialog-content").innerHTML = `
+        <div class="dialog-top">
+          <div><h2 id="dialog-title">${escapeHtml(course.title)}</h2><p>${escapeHtml(course.description)}</p></div>
+          <button class="icon-button" data-close-dialog aria-label="Close course details">×</button>
+        </div>
+        ${subjectContent}
+        <div class="dialog-actions"><button class="enroll-button ${enrolled ? "enrolled" : ""}" data-enroll="${course.id}">${enrolled ? "✓ Enrolled" : `Enroll · ₹${course.price}`}</button></div>`;
+      if (!byId("course-dialog").open) byId("course-dialog").showModal();
+    }
+
+    function toggleEnrollment(courseId) {
+      const course = catalog.find(item => item.id === courseId);
+      if (!course) return;
+      if (state.enrolled.includes(courseId)) {
+        showToast(`You’re already enrolled in ${course.title}.`);
+        return;
+      }
+      state.enrolled.push(courseId);
+      persist("tcc-enrolled", state.enrolled);
+      renderStore();
+      if (byId("course-dialog").open) openCourse(courseId);
+      showToast(`Enrollment saved for ${course.title}. Connect checkout to accept real payments.`);
+    }
+
+    document.addEventListener("click", event => {
+      const target = event.target instanceof Element ? event.target : null;
+      if (!target) return;
+      const nav = target.closest("[data-nav]");
+      if (nav) { event.preventDefault(); switchView(nav.dataset.nav); return; }
+      const subjectButton = target.closest("[data-subject-course]");
+      if (subjectButton) {
+        openSubjectPage(subjectButton.dataset.subjectCourse, subjectButton.dataset.subject);
+        return;
+      }
+      const backToSubjects = target.closest("[data-course-subjects]");
+      if (backToSubjects) {
+        openCourse(backToSubjects.dataset.courseSubjects);
+        return;
+      }
+      const courseButton = target.closest("[data-course]");
+      if (courseButton) { openCourse(courseButton.dataset.course); return; }
+      const enrollButton = target.closest("[data-enroll]");
+      if (enrollButton) { toggleEnrollment(enrollButton.dataset.enroll); return; }
+      if (target.closest("[data-close-dialog]")) byId("course-dialog").close();
+      if (target.closest("[data-scroll]")) byId(target.closest("[data-scroll]").dataset.scroll).scrollIntoView({ behavior: "smooth" });
+    });
+
+    byId("course-dialog").addEventListener("click", event => {
+      if (event.target === byId("course-dialog")) byId("course-dialog").close();
+    });
+    byId("back-to-course").addEventListener("click", () => {
+      if (history.state && history.state.tccSubjectPage) {
+        history.back();
+      } else {
+        const courseId = state.activeSubject && state.activeSubject.courseId;
+        history.replaceState(null, "", location.pathname);
+        restoreAppView();
+        if (courseId) openCourse(courseId);
+      }
+    });
+    window.addEventListener("popstate", restoreAppView);
+    byId("open-profile").addEventListener("click", () => switchView("info"));
+    byId("profile-form").addEventListener("submit", event => {
+      event.preventDefault();
+      const form = new FormData(event.currentTarget);
+      state.profile = {
+        name: String(form.get("name") || "").trim(),
+        email: String(form.get("email") || "").trim(),
+        grade: String(form.get("grade") || "")
+      };
+      persist("tcc-profile", state.profile);
+      renderProfile();
+      byId("profile-message").textContent = "Your details have been saved in this browser.";
+    });
+
+    byId("chat-form").addEventListener("submit", event => {
+      event.preventDefault();
+      const input = byId("chat-input");
+      const text = input.value.trim();
+      if (!text) return;
+      state.messages.push({
+        text,
+        mine: true,
+        time: new Intl.DateTimeFormat(undefined, { hour: "numeric", minute: "2-digit" }).format(new Date())
+      });
+      persist("tcc-messages", state.messages);
+      input.value = "";
+      renderMessages();
+    });
+
+    byId("lesson-upload-form").addEventListener("submit", async event => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const message = byId("lesson-upload-message");
+      const file = byId("lesson-file").files[0];
+      const title = byId("lesson-title").value.trim();
+      if (!state.activeSubject) {
+        message.textContent = "Open a subject before adding a lesson.";
+        return;
+      }
+      if (!title || !file) {
+        message.textContent = "Enter a lesson title and choose a video or PDF.";
+        return;
+      }
+      const isPdf = file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf");
+      const isVideo = file.type.startsWith("video/") || /\.(mp4|webm|ogv|mov|m4v)$/i.test(file.name);
+      if (!isPdf && !isVideo) {
+        message.textContent = "Choose a PDF document or a video file.";
+        return;
+      }
+      const course = catalog.find(item => item.id === state.activeSubject.courseId);
+      const subject = state.activeSubject.subject;
+      const button = form.querySelector("button[type='submit']");
+      button.disabled = true;
+      button.textContent = "Saving…";
+      message.textContent = "";
+      try {
+        await saveLesson({
+          courseId: state.activeSubject.courseId,
+          subject,
+          title,
+          fileName: file.name,
+          type: isVideo ? "video" : "pdf",
+          file,
+          createdAt: Date.now()
+        });
+        form.reset();
+        message.textContent = `“${title}” was saved for ${course.title} ${subject}.`;
+        await renderSubjectLessons(state.activeSubject.courseId, subject);
+      } catch (error) {
+        message.textContent = `Could not save this file: ${error.message}`;
+      } finally {
+        button.disabled = false;
+        button.textContent = "Upload to this subject";
+      }
+    });
+
+    renderHome();
+    renderProfile();
+    renderMessages();
+    restoreAppView();
+  </script>
+</body>
+</html>
