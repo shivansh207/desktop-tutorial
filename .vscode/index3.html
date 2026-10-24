@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#f5f4ed">
+	<meta name="description" content="Learn with expert teachers at Tiwari Coaching Classes. Explore focused courses, live classes, and personal guidance.">
+	<title>Tiwari Coaching Classes | Learn with confidence</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--ink: #172a28;
+			--muted: #64736e;
+			--paper: #f5f4ed;
+			--white: #fffefa;
+			--green: #176b55;
+			--green-dark: #105440;
+			--lime: #d5ed7b;
+			--coral: #eb775d;
+			--line: #dfe4da;
+			--serif: Georgia, 'Times New Roman', serif;
+		}
+		* { box-sizing: border-box; }
+		html { scroll-behavior: smooth; }
+		body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'DM Sans', sans-serif; }
+		a { color: inherit; text-decoration: none; }
+		button, input, select { font: inherit; }
+		button, a, input, select { -webkit-tap-highlight-color: transparent; }
+		.shell { width: min(1180px, calc(100% - 56px)); margin: 0 auto; }
+		.topline { height: 38px; display: flex; align-items: center; justify-content: center; background: var(--ink); color: white; font-size: 12px; letter-spacing: .02em; }
+		.topline strong { color: var(--lime); font-weight: 700; margin-right: 7px; }
+		header { height: 82px; display: flex; align-items: center; border-bottom: 1px solid rgba(23,42,40,.1); }
+		.nav { display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+		.brand { display: flex; align-items: center; gap: 11px; flex: 0 0 auto; }
+		.brand-mark { width: 39px; height: 39px; border-radius: 12px 12px 12px 3px; display: grid; place-items: center; background: var(--green); color: var(--lime); font: 700 21px var(--serif); transform: rotate(-3deg); }
+		.brand-name { font: 800 15px/1.05 'Manrope', sans-serif; letter-spacing: -.04em; }
+		.brand-name span { display: block; margin-top: 4px; color: var(--muted); font: 600 9px 'DM Sans', sans-serif; letter-spacing: .17em; text-transform: uppercase; }
+		.nav-links { display: flex; align-items: center; gap: 32px; color: #475954; font-size: 13px; font-weight: 600; }
+		.nav-links a:hover { color: var(--green); }
+		.nav-cta, .button { min-height: 44px; padding: 0 19px; display: inline-flex; justify-content: center; align-items: center; gap: 10px; border: 0; border-radius: 5px; background: var(--green); color: white; font-size: 13px; font-weight: 700; cursor: pointer; transition: background .2s, transform .2s; }
+		.nav-cta:hover, .button:hover { background: var(--green-dark); transform: translateY(-2px); }
+		.mobile-toggle { display: none; border: 0; background: transparent; padding: 8px; color: var(--ink); cursor: pointer; }
+		.hero { padding: 63px 0 71px; overflow: hidden; }
+		.hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 52px; align-items: center; }
+		.eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+		.eyebrow::before { content: ''; width: 23px; height: 2px; background: var(--coral); }
+		h1, h2, h3, p { margin-top: 0; }
+		h1 { max-width: 575px; margin: 20px 0 18px; font: 600 clamp(46px, 5.3vw, 70px)/1.02 var(--serif); letter-spacing: -.055em; }
+		h1 em { color: var(--green); font-weight: 500; }
+		.hero-copy { max-width: 475px; color: var(--muted); font-size: 15px; line-height: 1.75; }
+		.hero-actions { display: flex; align-items: center; gap: 21px; margin-top: 27px; }
+		.text-link { display: inline-flex; gap: 9px; align-items: center; color: var(--ink); font-size: 13px; font-weight: 700; }
+		.text-link span { font-size: 18px; color: var(--green); transition: transform .2s; }
+		.text-link:hover span { transform: translateX(4px); }
+		.proof { display: flex; align-items: center; gap: 13px; margin-top: 42px; }
+		.avatars { display: flex; padding-left: 4px; }
+		.avatar { width: 31px; height: 31px; margin-left: -4px; display: grid; place-items: center; border: 2px solid var(--paper); border-radius: 50%; background: #c5d8c6; color: var(--green-dark); font-size: 9px; font-weight: 700; }
+		.avatar:nth-child(2) { background: #efc6a4; color: #73472b; }
+		.avatar:nth-child(3) { background: #e9a08a; color: #693c2e; }
+		.avatar:nth-child(4) { background: #a6c4ba; color: #245244; }
+		.proof-copy { color: var(--muted); font-size: 11px; line-height: 1.5; }
+		.proof-copy strong { color: var(--ink); font-size: 12px; }
+		.hero-visual { position: relative; min-height: 438px; }
+		.hero-photo { position: absolute; inset: 0 15px 13px 24px; overflow: hidden; border-radius: 4px 105px 4px 4px; background: #d4d9c4; }
+		.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; display: block; }
+		.hero-photo::after { content: ''; position: absolute; inset: 55% 0 0; background: linear-gradient(transparent, rgba(13,34,28,.42)); }
+		.photo-caption { position: absolute; z-index: 1; bottom: 29px; left: 31px; color: white; font-size: 12px; }
+		.photo-caption strong { display: block; margin-bottom: 4px; font: 600 20px var(--serif); }
+		.hero-sticker { position: absolute; z-index: 2; top: 25px; left: 0; width: 105px; height: 105px; display: flex; align-items: center; justify-content: center; flex-direction: column; border-radius: 50%; background: var(--lime); color: var(--ink); text-align: center; transform: rotate(-10deg); box-shadow: 0 7px 20px rgba(23,42,40,.1); }
+		.hero-sticker strong { font: 700 27px var(--serif); }
+		.hero-sticker span { font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+		.class-note { position: absolute; z-index: 2; right: -4px; bottom: -5px; width: 199px; padding: 17px 18px; background: var(--white); box-shadow: 0 14px 45px rgba(23,42,40,.12); }
+		.class-note small { color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+		.class-note strong { display: block; margin: 7px 0 10px; font: 600 17px var(--serif); }
+		.note-bottom { display: flex; justify-content: space-between; color: var(--green); font-size: 10px; font-weight: 700; }
+		.stats { background: var(--green); color: white; }
+		.stats-row { min-height: 122px; display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; }
+		.stat { padding: 10px 28px; border-right: 1px solid rgba(255,255,255,.2); }
+		.stat:first-child { padding-left: 0; }
+		.stat:last-child { border-right: 0; }
+		.stat strong { display: block; color: var(--lime); font: 600 31px var(--serif); }
+		.stat span { font-size: 11px; color: rgba(255,255,255,.78); }
+		.section { padding: 83px 0; }
+		.section-heading { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 31px; }
+		.section-heading h2 { max-width: 540px; margin: 11px 0 0; font: 600 42px/1.08 var(--serif); letter-spacing: -.04em; }
+		.section-heading p { max-width: 350px; margin: 0 0 3px; color: var(--muted); font-size: 13px; line-height: 1.65; }
+		.filters { display: flex; align-items: center; gap: 8px; margin: 0 0 23px; }
+		.filter-button { padding: 9px 14px; border: 1px solid var(--line); border-radius: 3px; background: transparent; color: var(--muted); font-size: 11px; font-weight: 700; cursor: pointer; }
+		.filter-button[aria-pressed="true"] { border-color: var(--green); background: var(--green); color: white; }
+		.course-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+		.course-card { min-height: 252px; padding: 23px; display: flex; flex-direction: column; background: var(--white); border: 1px solid #e8e9df; transition: transform .22s, box-shadow .22s; }
+		.course-card:hover { transform: translateY(-4px); box-shadow: 0 13px 28px rgba(23,42,40,.08); }
+		.course-card[hidden] { display: none; }
+		.course-top { display: flex; justify-content: space-between; align-items: start; }
+		.course-icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; background: #e6efc8; color: var(--green); font: 600 19px var(--serif); }
+		.course-card:nth-child(2) .course-icon, .course-card:nth-child(5) .course-icon { background: #f8e2d8; color: #b8513b; }
+		.course-card:nth-child(3) .course-icon, .course-card:nth-child(6) .course-icon { background: #dcebe8; color: #266454; }
+		.course-tag { padding: 6px 8px; border-radius: 2px; background: #f1f3e8; color: #5d7066; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+		.course-card h3 { margin: 24px 0 8px; font: 600 23px var(--serif); }
+		.course-card p { margin-bottom: 19px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+		.course-meta { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 14px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
+		.course-meta a { color: var(--green); font-size: 11px; font-weight: 700; }
+		.approach { padding: 65px 0; background: #e7eee5; }
+		.approach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+		.approach h2 { max-width: 430px; margin: 13px 0 17px; font: 600 41px/1.08 var(--serif); letter-spacing: -.04em; }
+		.approach-copy { max-width: 430px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+		.benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 23px 18px; }
+		.benefit { display: flex; gap: 12px; }
+		.check { flex: 0 0 25px; height: 25px; display: grid; place-items: center; border-radius: 50%; background: var(--green); color: white; font-size: 13px; }
+		.benefit strong { display: block; margin-bottom: 5px; font-size: 12px; }
+		.benefit span:last-child { color: var(--muted); font-size: 11px; line-height: 1.5; }
+		.testimonial { padding: 80px 0; }
+		.quote-wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: 65px; align-items: center; }
+		.quote-image { height: 280px; overflow: hidden; background: #e9c5ab; }
+		.quote-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 38%; display: block; }
+		blockquote { margin: 0; }
+		.quote-mark { color: var(--coral); font: 700 53px/.8 var(--serif); }
+		blockquote p { margin: 16px 0 23px; font: 500 27px/1.35 var(--serif); letter-spacing: -.02em; }
+		.quote-by { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: 16px; }
+		.quote-by strong { display: block; font-size: 12px; }
+		.quote-by span { color: var(--muted); font-size: 10px; }
+		.stars { color: #d69236; font-size: 12px; letter-spacing: 2px; }
+		.enroll { padding: 72px 0; background: var(--ink); color: white; }
+		.enroll-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 70px; align-items: center; }
+		.enroll h2 { max-width: 410px; margin: 14px 0 17px; font: 600 43px/1.08 var(--serif); letter-spacing: -.04em; }
+		.enroll-copy { max-width: 390px; color: #b6c5bf; font-size: 13px; line-height: 1.7; }
+		.contact-line { margin-top: 27px; color: var(--lime); font-size: 12px; font-weight: 600; }
+		.form { padding: 26px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; background: #203835; }
+		.field { display: flex; flex-direction: column; gap: 7px; }
+		.field.full { grid-column: 1 / -1; }
+		.field label { color: #d0d9d4; font-size: 10px; font-weight: 600; }
+		.field input, .field select { width: 100%; height: 43px; padding: 0 12px; border: 1px solid #49605a; border-radius: 2px; outline: 0; background: #172e2a; color: white; font-size: 12px; }
+		.field input:focus, .field select:focus { border-color: var(--lime); }
+		.field input::placeholder { color: #84958e; }
+		.form .button { grid-column: 1 / -1; margin-top: 2px; background: var(--lime); color: var(--ink); }
+		.form .button:hover { background: #c8e568; }
+		.form-status { grid-column: 1 / -1; min-height: 17px; margin: 0; color: var(--lime); font-size: 11px; }
+		footer { padding: 24px 0; background: #102320; color: #c2cec8; }
+		.footer-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; font-size: 10px; }
+		.footer-links { display: flex; gap: 19px; }
+		.footer-links a:hover { color: var(--lime); }
+		.reveal { animation: rise .65s both; }
+		@keyframes rise { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+		@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+		@media (max-width: 850px) {
+			.shell { width: min(100% - 38px, 680px); }
+			.nav-links { gap: 18px; }
+			.nav-cta { display: none; }
+			.hero { padding: 48px 0 60px; }
+			.hero-grid { gap: 30px; grid-template-columns: 1fr 1fr; }
+			.hero-visual { min-height: 370px; }
+			h1 { font-size: 52px; }
+			.stats-row { min-height: 105px; }
+			.stat { padding: 10px 16px; }
+			.section { padding: 66px 0; }
+			.approach-grid { gap: 34px; }
+			.quote-wrap { gap: 36px; }
+			.enroll-grid { gap: 35px; }
+		}
+		@media (max-width: 620px) {
+			.shell { width: calc(100% - 34px); }
+			.topline { height: 34px; font-size: 10px; }
+			header { height: 68px; }
+			.mobile-toggle { display: inline-flex; }
+			.nav-links { position: absolute; z-index: 5; top: 102px; left: 0; right: 0; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 8px 17px 13px; border-bottom: 1px solid var(--line); background: var(--paper); }
+			.nav-links.open { display: flex; }
+			.nav-links a { padding: 13px 4px; border-bottom: 1px solid var(--line); }
+			.hero { padding: 39px 0 52px; }
+			.hero-grid { grid-template-columns: 1fr; gap: 35px; }
+			h1 { max-width: 460px; font-size: 50px; }
+			.hero-copy { font-size: 14px; }
+			.proof { margin-top: 30px; }
+			.hero-visual { min-height: 355px; margin: 0 4px; }
+			.hero-photo { inset: 0 11px 12px 13px; border-top-right-radius: 84px; }
+			.hero-sticker { width: 85px; height: 85px; left: -4px; top: 16px; }
+			.hero-sticker strong { font-size: 23px; }
+			.class-note { width: 174px; right: -1px; }
+			.stats-row { grid-template-columns: 1fr 1fr; padding: 13px 0; }
+			.stat { padding: 13px 10px; border-right: 0; }
+			.stat:nth-child(odd) { padding-left: 0; }
+			.stat strong { font-size: 27px; }
+			.section-heading { display: block; margin-bottom: 24px; }
+			.section-heading h2, .approach h2 { font-size: 36px; }
+			.section-heading p { margin-top: 13px; }
+			.filters { overflow-x: auto; padding-bottom: 4px; }
+			.filter-button { flex: 0 0 auto; }
+			.course-grid { grid-template-columns: 1fr; gap: 11px; }
+			.course-card { min-height: 220px; }
+			.approach { padding: 54px 0; }
+			.approach-grid, .quote-wrap, .enroll-grid { grid-template-columns: 1fr; gap: 32px; }
+			.benefits { gap: 21px 13px; }
+			.testimonial { padding: 56px 0; }
+			.quote-image { height: 235px; }
+			blockquote p { font-size: 24px; }
+			.enroll { padding: 55px 0; }
+			.enroll h2 { font-size: 38px; }
+			.form { padding: 19px; gap: 12px; }
+			.form .field:not(.full) { grid-column: 1 / -1; }
+			.footer-row { flex-direction: column; align-items: flex-start; }
+		}
+	</style>
+</head>
+<body>
+	<div class="topline"><strong>Admissions open</strong> New batches begin soon <span aria-hidden="true">&nbsp;·&nbsp;</span> Find your next step</div>
+	<header>
+		<nav class="nav shell" aria-label="Main navigation">
+			<a class="brand" href="#home" aria-label="Tiwari Coaching Classes home">
+				<span class="brand-mark" aria-hidden="true">T</span>
+				<span class="brand-name">TIWARI<span>Coaching Classes</span></span>
+			</a>
+			<div class="nav-links" id="nav-links">
+				<a href="#courses">Courses</a>
+				<a href="#approach">Our approach</a>
+				<a href="#stories">Student stories</a>
+			</div>
+			<a class="nav-cta" href="#enroll">Talk to an advisor <span aria-hidden="true">↗</span></a>
+			<button class="mobile-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+		</nav>
+	</header>
+
+	<main>
+		<section class="hero" id="home">
+			<div class="shell hero-grid">
+				<div class="reveal">
+					<span class="eyebrow">A little more than a classroom</span>
+					<h1>Make room for your <em>next big idea.</em></h1>
+					<p class="hero-copy">Good teaching changes what feels possible. Find focused classes, thoughtful teachers, and a learning plan made around you.</p>
+					<div class="hero-actions">
+						<a class="button" href="#courses">Explore courses <span aria-hidden="true">→</span></a>
+						<a class="text-link" href="#approach">How we teach <span aria-hidden="true">↗</span></a>
+					</div>
+					<div class="proof">
+						<div class="avatars" aria-hidden="true"><span class="avatar">AS</span><span class="avatar">RK</span><span class="avatar">MP</span><span class="avatar">NJ</span></div>
+						<div class="proof-copy"><strong>A community that shows up</strong><br>Students learning with us every day</div>
+					</div>
+				</div>
+				<div class="hero-visual reveal">
+					<div class="hero-photo">
+						<img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1100&q=85" alt="Students working together in a bright classroom">
+						<div class="photo-caption"><strong>Curiosity looks good on you.</strong>Learn at your own pace, together.</div>
+					</div>
+					<div class="hero-sticker"><strong>Learn</strong><span>with purpose</span></div>
+					<div class="class-note"><small>Made for your goals</small><strong>Small steps. Real progress.</strong><div class="note-bottom"><span>Personal guidance</span><span>↗</span></div></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="stats" aria-label="Tiwari Coaching Classes at a glance">
+			<div class="shell stats-row">
+				<div class="stat"><strong>1:1</strong><span>Personal attention that matters</span></div>
+				<div class="stat"><strong>Live</strong><span>Classes with real teachers</span></div>
+				<div class="stat"><strong>Every</strong><span>Question has a place here</span></div>
+				<div class="stat"><strong>Your pace</strong><span>A plan shaped around you</span></div>
+			</div>
+		</section>
+
+		<section class="section" id="courses">
+			<div class="shell">
+				<div class="section-heading">
+					<div><span class="eyebrow">Find your starting point</span><h2>Classes for grades 6 to 12.</h2></div>
+					<p>Explore school subjects for every grade, with Physics, Chemistry, and Biology offered separately from grade 9 onward.</p>
+				</div>
+				<div class="filters" role="group" aria-label="Filter courses by grade">
+					<button class="filter-button" type="button" data-filter="all" aria-pressed="true">All grades</button>
+					<button class="filter-button" type="button" data-filter="6-8" aria-pressed="false">Grades 6–8</button>
+					<button class="filter-button" type="button" data-filter="9-10" aria-pressed="false">Grades 9–10</button>
+					<button class="filter-button" type="button" data-filter="11-12" aria-pressed="false">Grades 11–12</button>
+				</div>
+				<div class="course-grid">
+					<article class="course-card" data-grades="6-8 9-10 11-12">
+						<div class="course-top"><span class="course-icon">∑</span><span class="course-tag">Grades 6–12</span></div>
+						<h3>Mathematics</h3><p>Build confidence in concepts, problem-solving, and mathematical reasoning.</p>
+						<div class="course-meta"><span>Weekly live classes</span><a href="#enroll">Find your class ↗</a></div>
+					</article>
+					<article class="course-card" data-grades="6-8 9-10 11-12">
+						<div class="course-top"><span class="course-icon">अ</span><span class="course-tag">Grades 6–12</span></div>
+						<h3>Hindi</h3><p>Develop reading, writing, grammar, and confident expression in Hindi.</p>
+						<div class="course-meta"><span>Concept-led learning</span><a href="#enroll">Find your class ↗</a></div>
+					</article>
+					<article class="course-card" data-grades="6-8 9-10 11-12">
+						<div class="course-top"><span class="course-icon">Aa</span><span class="course-tag">Grades 6–12</span></div>
+						<h3>English</h3><p>Strengthen grammar, reading, writing, and the confidence to express ideas.</p>
+						<div class="course-meta"><span>Learn by doing</span><a href="#enroll">Find your class ↗</a></div>
+					</article>
+					<article class="course-card" data-grades="6-8 9-10 11-12">
+						<div class="course-top"><span class="course-icon">✳</span><span class="course-tag">Grades 6–12</span></div>
+						<h3>Science</h3><p>Grades 6–8 build science foundations; grades 9–12 study Physics, Chemistry, and Biology.</p>
+						<div class="course-meta"><span>Concept-led learning</span><a href="#enroll">Find your class ↗</a></div>
+					</article>
+					<article class="course-card" data-grades="9-10 11-12">
+						<div class="course-top"><span class="course-icon">⚛</span><span class="course-tag">Grades 9–12 · Science</span></div>
+						<h3>Physics</h3><p>Explore motion, energy, forces, and the principles that explain the physical world.</p>
+						<div class="course-meta"><span>Grades 9–12</span><a href="#enroll">Find your class ↗</a></div>
+					</article>
+					<article class="course-card" data-grades="9-10 11-12">
+						<div class="course-top"><span class="course-icon">⌬</span><span class="course-tag">Grades 9–12 · Science</span></div>
+						<h3>Chemistry</h3><p>Understand matter, reactions, and the ideas behind chemical change.</p>
+						<div class="course-meta"><span>Grades 9–12</span><a href="#enroll">Find your class ↗</a></div>
+					</article>
+					<article class="course-card" data-grades="9-10 11-12">
+						<div class="course-top"><span class="course-icon">❋</span><span class="course-tag">Grades 9–12 · Science</span></div>
+						<h3>Biology</h3><p>Study living systems, the human body, and the diversity of life.</p>
+						<div class="course-meta"><span>Grades 9–12</span><a href="#enroll">Find your class ↗</a></div>
+					</article>
+					<article class="course-card" data-grades="6-8 9-10 11-12">
+						<div class="course-top"><span class="course-icon">⌘</span><span class="course-tag">Grades 6–12</span></div>
+						<h3>Computer</h3><p>Build digital confidence, logical thinking, and essential computer skills.</p>
+						<div class="course-meta"><span>Hands-on sessions</span><a href="#enroll">Find your class ↗</a></div>
+					</article>
+					<article class="course-card" data-grades="6-8 9-10 11-12">
+						<div class="course-top"><span class="course-icon">⌖</span><span class="course-tag">Grades 6–12</span></div>
+						<h3>Social Science</h3><p>Learn about history, geography, civics, and the societies around us.</p>
+						<div class="course-meta"><span>Grades 6–12</span><a href="#enroll">Find your class ↗</a></div>
+					</article>
+					<article class="course-card" data-grades="6-8 9-10 11-12">
+						<div class="course-top"><span class="course-icon">सं</span><span class="course-tag">Grades 6–12</span></div>
+						<h3>Sanskrit</h3><p>Build a foundation in Sanskrit vocabulary, grammar, reading, and translation.</p>
+						<div class="course-meta"><span>Personal learning plan</span><a href="#enroll">Find your class ↗</a></div>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section class="approach" id="approach">
+			<div class="shell approach-grid">
+				<div><span class="eyebrow">A better way to learn</span><h2>Here, your questions lead the way.</h2><p class="approach-copy">Learning is personal. We take time to understand where you are, explain ideas in a way that clicks, and help you build the confidence to go further.</p></div>
+				<div class="benefits">
+					<div class="benefit"><span class="check">✓</span><div><strong>Teachers who listen</strong><span>Supportive guidance that starts with you.</span></div></div>
+					<div class="benefit"><span class="check">✓</span><div><strong>Clear learning plans</strong><span>Know what you are working toward and why.</span></div></div>
+					<div class="benefit"><span class="check">✓</span><div><strong>Room to ask anything</strong><span>Get help with the things you almost asked.</span></div></div>
+					<div class="benefit"><span class="check">✓</span><div><strong>Progress you can feel</strong><span>Small wins that build lasting confidence.</span></div></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="testimonial" id="stories">
+			<div class="shell quote-wrap">
+				<div class="quote-image"><img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=900&q=85" alt="A student writing notes while studying"></div>
+				<blockquote><span class="eyebrow">A student story</span><div class="quote-mark" aria-hidden="true">“</div><p>I used to be nervous about asking questions. Now I understand the ideas, and I actually look forward to class.</p><div class="quote-by"><div><strong>A learner from our classroom</strong><span>Science &amp; Maths student</span></div><span class="stars" aria-label="5 out of 5 stars">★★★★★</span></div></blockquote>
+			</div>
+		</section>
+
+		<section class="enroll" id="enroll">
+			<div class="shell enroll-grid">
+				<div><span class="eyebrow" style="color:var(--lime)">Your next chapter starts here</span><h2>Let's find the right class for you.</h2><p class="enroll-copy">Tell us what you are looking for. Our team will help you explore the right course and next steps.</p><p class="contact-line">Friendly guidance. No pressure. Just a conversation.</p></div>
+				<form class="form" id="enroll-form">
+					<div class="field"><label for="student-name">Your name</label><input id="student-name" name="name" type="text" placeholder="e.g. Aanya Sharma" required></div>
+					<div class="field"><label for="student-phone">Phone number</label><input id="student-phone" name="phone" type="tel" placeholder="Your contact number" required></div>
+					<div class="field"><label for="student-grade">Current grade</label><select id="student-grade" name="grade" required><option value="" disabled selected>Select a grade</option><option>Grade 6</option><option>Grade 7</option><option>Grade 8</option><option>Grade 9</option><option>Grade 10</option><option>Grade 11</option><option>Grade 12</option></select></div>
+					<div class="field"><label for="student-course">Course you're interested in</label><select id="student-course" name="course" required><option value="" disabled selected>Choose a course</option><option>Mathematics</option><option>Hindi</option><option>English</option><option>Science</option><option>Physics</option><option>Chemistry</option><option>Biology</option><option>Computer</option><option>Social Science</option><option>Sanskrit</option><option>Not sure yet</option></select></div>
+					<button class="button" type="submit">Request a call <span aria-hidden="true">→</span></button>
+					<p class="form-status" id="form-status" aria-live="polite"></p>
+				</form>
+			</div>
+		</section>
+	</main>
+	<footer><div class="shell footer-row"><span>© 2026 Tiwari Coaching Classes</span><div class="footer-links"><a href="#courses">Courses</a><a href="#approach">Our approach</a><a href="#enroll">Get in touch</a></div><span>Learn with confidence.</span></div></footer>
+	<script>
+		const menuToggle = document.querySelector('#menu-toggle');
+		const navLinks = document.querySelector('#nav-links');
+		menuToggle.addEventListener('click', () => {
+			const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+			menuToggle.setAttribute('aria-expanded', String(!isOpen));
+			menuToggle.setAttribute('aria-label', isOpen ? 'Open navigation' : 'Close navigation');
+			navLinks.classList.toggle('open', !isOpen);
+		});
+		navLinks.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+			navLinks.classList.remove('open');
+			menuToggle.setAttribute('aria-expanded', 'false');
+			menuToggle.setAttribute('aria-label', 'Open navigation');
+		}));
+		document.querySelectorAll('.filter-button').forEach((button) => button.addEventListener('click', () => {
+			document.querySelectorAll('.filter-button').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+				document.querySelectorAll('.course-card').forEach((card) => {
+					card.hidden = button.dataset.filter !== 'all' && !card.dataset.grades.split(' ').includes(button.dataset.filter);
+			});
+		}));
+		document.querySelector('#enroll-form').addEventListener('submit', (event) => {
+			event.preventDefault();
+			const studentName = document.querySelector('#student-name').value.trim();
+			document.querySelector('#form-status').textContent = `Thanks, ${studentName}! Your request is noted. Our team will be in touch.`;
+			event.currentTarget.reset();
+		});
+	</script>
+</body>
+</html>

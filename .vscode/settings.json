@@ -1,0 +1,13 @@
+{
+    "liveServer.settings.cors": false,
+    "liveServer.settings.AdvanceCustomBrowserCmdLine": "",
+    "liveServer.settings.useLocalIp": false,
+    "liveServer.settings.host": "",
+    "liveServer.settings.https": {
+        "enable": true
+    },
+    "liveServer.settings.proxy": {
+        "enable": true
+    },
+    "liveServer.settings.wait": 0
+}
